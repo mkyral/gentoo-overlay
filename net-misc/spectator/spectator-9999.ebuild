@@ -4,7 +4,7 @@
 
 EAPI=5
 
-inherit git-r3 qt5-build qmake-utils
+inherit git-r3 qmake-utils
 
 MY_P=${PN}-${PV%0}
 
