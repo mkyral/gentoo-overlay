@@ -4,7 +4,7 @@
 
 EAPI=5
 
-inherit cmake-utils git-2
+inherit cmake-utils git-r3
 
 DESCRIPTION="THe Experimental RAw Photo Editor"
 HOMEPAGE="http://www.rawtherapee.com/"
@@ -14,10 +14,10 @@ EGIT_REPO_URI="https://github.com/Beep6581/RawTherapee.git"
 LICENSE="GPL-3"
 SLOT='0'
 KEYWORDS=""
-IUSE="+openmp"
+IUSE="+openmp gtk3"
 
 DEPEND="
-	dev-cpp/gtkmm:2.4
+	gtk3? ( dev-cpp/gtkmm:3.0 ) !gtk3? ( dev-cpp/gtkmm:2.4 )
 	media-libs/libcanberra
 	media-libs/lcms
 	media-libs/libiptcdata
@@ -31,4 +31,8 @@ DEPEND="
 	virtual/jpeg
 	"
 RDEPEND="${DEPEND}"
+
+pre_pkg_setup() {
+  use gtk3 && EGIT_BRANCH="gtk3"
+}
 
