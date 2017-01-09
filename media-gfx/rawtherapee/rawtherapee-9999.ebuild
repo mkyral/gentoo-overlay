@@ -33,6 +33,6 @@ DEPEND="
 RDEPEND="${DEPEND}"
 
 pre_pkg_setup() {
-  use gtk3 && EGIT_BRANCH="gtk3"
+  use gtk3 && EGIT_BRANCH="gtk3-bugfix"
 }
 
