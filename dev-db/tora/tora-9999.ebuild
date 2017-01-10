@@ -58,6 +58,7 @@ src_prepare() {
 	# bug 547520
 	grep -rlZ '$$ORIGIN' . | xargs -0 sed -i 's|:$$ORIGIN[^:"]*||' || \
 		die 'Removal of $$ORIGIN failed'
+  epatch "${FILESDIR}"/fix_fPIC_issue.patch
 }
 
 src_configure() {
