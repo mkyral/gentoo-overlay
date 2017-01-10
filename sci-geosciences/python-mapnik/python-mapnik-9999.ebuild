@@ -12,6 +12,9 @@ DESCRIPTION="Python bindings for Mapnik"
 HOMEPAGE="https://github.com/mapnik/python-mapnik"
 EGIT_REPO_URI="https://github.com/mapnik/python-mapnik.git"
 
+# for compatibility with v3.0.12
+EGIT_COMMIT="ea5fd113504bd789fdd450ba5abf0474bd841106"
+
 SLOT="0"
 LICENSE="LGPL-2.1"
 KEYWORDS="~amd64 ~x86"
