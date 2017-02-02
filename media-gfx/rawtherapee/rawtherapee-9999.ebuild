@@ -10,14 +10,15 @@ DESCRIPTION="THe Experimental RAw Photo Editor"
 HOMEPAGE="http://www.rawtherapee.com/"
 
 EGIT_REPO_URI="https://github.com/Beep6581/RawTherapee.git"
+EGIT_BRANCH="dev"
 
 LICENSE="GPL-3"
 SLOT='0'
 KEYWORDS=""
-IUSE="+openmp gtk3"
+IUSE="+openmp gtk2"
 
 DEPEND="
-	gtk3? ( dev-cpp/gtkmm:3.0 ) !gtk3? ( dev-cpp/gtkmm:2.4 )
+	!gtk2? ( dev-cpp/gtkmm:3.0 ) gtk2? ( dev-cpp/gtkmm:2.4 )
 	media-libs/libcanberra
 	media-libs/lcms
 	media-libs/libiptcdata
@@ -33,6 +34,6 @@ DEPEND="
 RDEPEND="${DEPEND}"
 
 pre_pkg_setup() {
-  use gtk3 && EGIT_BRANCH="gtk3-bugfix"
+  use gtk2 && EGIT_BRANCH="gtk2"
 }
 
