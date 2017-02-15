@@ -53,12 +53,8 @@ src_prepare() {
 	sed -i \
 		-e "/COPYING/ d" \
 		CMakeLists.txt || die "Removal of COPYING file failed"
-	# 'svn info' needs .svn subdirectory
-#	[[ ${PV} != 9999 ]] || cp -a "${ESVN_WC_PATH}"/.svn .svn || die
-	# bug 547520
 	grep -rlZ '$$ORIGIN' . | xargs -0 sed -i 's|:$$ORIGIN[^:"]*||' || \
 		die 'Removal of $$ORIGIN failed'
-  epatch "${FILESDIR}"/fix_fPIC_issue.patch
 }
 
 src_configure() {
