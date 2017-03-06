@@ -15,7 +15,7 @@ HOMEPAGE='http://www.giuspen.com/cherrytree'
 LICENSE='GPL-3'
 
 SLOT='0'
-SRC_URI="https://github.com/giuspen/${PN}/archive/${PV}.tar.xz -> ${P}.tar.xz"
+SRC_URI="http://www.giuspen.com/software/${P}.tar.xz"
 
 KEYWORDS='~amd64 ~x86'
 IUSE='nls'
