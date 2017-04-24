@@ -10,6 +10,7 @@ DESCRIPTION="THe Experimental RAw Photo Editor"
 HOMEPAGE="http://www.rawtherapee.com/"
 
 EGIT_REPO_URI="https://github.com/Beep6581/RawTherapee.git"
+EGIT_BRANCH="dev"
 
 LICENSE="GPL-3"
 SLOT='0'
