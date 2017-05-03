@@ -2,13 +2,13 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
-EAPI=5
+EAPI=6
 
 inherit cmake-utils eutils
 
 if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="https://github.com/tora-tool/tora.git"
-	inherit git-2
+	inherit git-r3
 	SRC_URI=""
 else
 	SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
@@ -23,14 +23,15 @@ LICENSE="GPL-2"
 KEYWORDS=""
 
 DEPEND="
-	virtual/pkgconfig
+	oci8-instant-client? ( dev-db/oracle-instantclient-basic )
+	postgres? ( dev-db/postgresql )
+    dev-libs/boost
 	dev-libs/ferrisloki
-	x11-libs/qscintilla
 	dev-qt/qtgui:5
 	dev-qt/qtsql:5[mysql?,postgres?]
 	dev-qt/qtxmlpatterns:5
-	oci8-instant-client? ( dev-db/oracle-instantclient-basic )
-	postgres? ( dev-db/postgresql )
+	virtual/pkgconfig
+	x11-libs/qscintilla
 "
 RDEPEND="${DEPEND}"
 
@@ -50,6 +51,8 @@ pkg_setup() {
 }
 
 src_prepare() {
+    #epatch_user
+    eapply_user
 	sed -i \
 		-e "/COPYING/ d" \
 		CMakeLists.txt || die "Removal of COPYING file failed"
@@ -64,6 +67,13 @@ src_configure() {
 	else
 		mycmakeargs=(-DENABLE_ORACLE=OFF)
 	fi
+
+	if use debug ; then
+        mycmakeargs=(-DCMAKE_BUILD_TYPE=Debug)
+	else
+        mycmakeargs=(-DCMAKE_BUILD_TYPE=Release)
+	fi
+
 	mycmakeargs+=(
 		-DWANT_RPM=OFF
 		-DWANT_BUNDLE=OFF
@@ -72,8 +82,7 @@ src_configure() {
 		-DWANT_INTERNAL_LOKI=OFF
 		-DLOKI_LIBRARY="$(pkg-config --variable=libdir ferrisloki)/libferrisloki.so"
 		-DLOKI_INCLUDE_DIR="$(pkg-config --variable=includedir ferrisloki)/FerrisLoki"
-		$(cmake-utils_use_enable postgres PGSQL)
-		$(cmake-utils_use_want debug)
+		-DENABLE_PGSQL="$(usex postgres)"
 		# path variables
 		-DTORA_DOC_DIR=share/doc/${PF}
 	)
