@@ -21,6 +21,7 @@ DEPEND="
 	gtk2? ( dev-cpp/gtkmm:2.4 ) !gtk2? ( dev-cpp/gtkmm:3.0 )
 	media-libs/libcanberra
 	media-libs/lcms
+	media-libs/lensfun
 	media-libs/libiptcdata
 	media-libs/libpng
 	dev-libs/libsigc++:2
