@@ -19,6 +19,7 @@ IUSE="+openmp gtk2"
 
 DEPEND="
 	gtk2? ( dev-cpp/gtkmm:2.4 ) !gtk2? ( dev-cpp/gtkmm:3.0 )
+	media-libs/lensfun
 	media-libs/libcanberra
 	media-libs/lcms
 	media-libs/lensfun
