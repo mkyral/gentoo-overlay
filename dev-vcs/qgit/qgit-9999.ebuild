@@ -1,18 +1,18 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
-EGIT_REPO_URI="	git://repo.or.cz/qgit4/redivivus.git"
+EGIT_REPO_URI="	git://github.com/tibirna/qgit.git"
 
-[[ ${PV} == 9999 ]] && git_eclass=git-2
+[[ ${PV} == 9999 ]] && git_eclass=git-r3
 
 inherit eutils ${git_eclass} qmake-utils
 echo $git_eclass
 unset git_eclass
 
 
-DESCRIPTION="Qt4 GUI for git repositories"
+DESCRIPTION="Qt5 GUI for git repositories"
 HOMEPAGE="http://libre.tibirna.org/projects/qgit/wiki/QGit"
 
 [[ ${PV} == 9999 ]] || SRC_URI="http://dev.gentoo.org/~pesa/distfiles/${P}.tar.gz"
