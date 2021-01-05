@@ -30,6 +30,7 @@ RDEPEND="
 	acct-group/plugdev
 	dev-python/pygobject:3[${PYTHON_USEDEP}]
 	>=dev-python/pyudev-0.13[${PYTHON_USEDEP}]
+	dev-python/psutil[${PYTHON_USEDEP}]
 	x11-libs/gtk+:3[introspection]
 	appindicator? ( dev-libs/libappindicator:3 )
 	libnotify? ( x11-libs/libnotify )"
