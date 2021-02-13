@@ -1,8 +1,0 @@
---- setup.py.bck	2011-12-30 18:35:10.000000000 +0100
-+++ setup.py	2011-12-30 18:35:26.000000000 +0100
-@@ -205,4 +205,4 @@
-           },
-        distclass=CherryTreeDist
-     )
--    subprocess.call("update-desktop-database")
-+    #subprocess.call("update-desktop-database")
